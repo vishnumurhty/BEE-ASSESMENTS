@@ -1,0 +1,97 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Movie Ticket Booking</title>
+</head>
+
+<body>
+
+    <h1>Online Movie Ticket Booking System</h1>
+
+    <script>
+
+        // Number of seats available
+        let seatsAvailable = true;
+
+
+        // Create a Promise named booking
+        const booking = new Promise((resolve, reject) => {
+
+            // setTimeout() simulates an asynchronous booking process
+            setTimeout(() => {
+
+                // Check whether seats are available
+                if (seatsAvailable) {
+
+                    resolve("1. Seat Availability: Seats are available.");
+
+                } else {
+
+                    reject("No Seats Available.");
+
+                }
+
+            }, 2000);
+
+        });
+
+
+        // Promise Chaining
+        booking
+
+            // 1. Check Seat Availability
+            .then((result) => {
+
+                console.log(result);
+
+                // Pass the result to the next .then()
+                return "2. Payment: Payment processed successfully.";
+
+            })
+
+
+            // 2. Process Payment
+            .then((result) => {
+
+                console.log(result);
+
+                // Pass the result to the next .then()
+                return "3. Booking: Movie booking confirmed.";
+
+            })
+
+
+            // 3. Confirm Booking
+            .then((result) => {
+
+                console.log(result);
+
+                // Pass the result to the next .then()
+                return "4. Ticket: Movie ticket generated successfully.";
+
+            })
+
+
+            // 4. Generate Ticket
+            .then((result) => {
+
+                console.log(result);
+
+            })
+
+
+            // Handle errors
+            .catch((error) => {
+
+                console.log("Booking Failed:", error);
+
+            });
+
+    </script>
+
+</body>
+</html>
+ 
