@@ -1,0 +1,96 @@
+ 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Online Exam Result</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 100px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Online Exam Result</h1>
+
+    <button onclick="checkResult()">Check Result</button>
+
+    <div id="result"></div>
+
+    <script>
+
+        /*
+         * Promise:
+         * A Promise represents a value that will be available
+         * in the future.
+         *
+         * calculateResult() returns a Promise.
+         */
+        function calculateResult() {
+
+            return new Promise((resolve, reject) => {
+
+                /*
+                 * setTimeout() delays the execution by 3 seconds.
+                 */
+                setTimeout(() => {
+
+                    /*
+                     * resolve() means the Promise has completed
+                     * successfully and provides the result.
+                     */
+                    resolve("Your result is ready! You scored 85 marks.");
+
+                }, 3000);
+
+            });
+        }
+
+
+        /*
+         * async:
+         * The async keyword makes this function asynchronous
+         * and allows us to use await inside it.
+         */
+        async function checkResult() {
+
+            // Display this message immediately
+            document.getElementById("result").innerText =
+                "Calculating your result...";
+
+            /*
+             * await:
+             * await pauses this function until calculateResult()
+             * finishes its Promise.
+             *
+             * The browser does NOT freeze.
+             */
+            const result = await calculateResult();
+
+            // Display the result after 3 seconds
+            document.getElementById("result").innerText = result;
+        }
+
+    </script>
+
+</body>
+</html>
+ 
